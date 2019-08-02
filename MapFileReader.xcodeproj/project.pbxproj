@@ -1,0 +1,744 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF0D9498218C7074005396EF /* MFRTileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0D9497218C7074005396EF /* MFRTileNode.swift */; };
+		AF558F7022DDD164005D8200 /* MFRMultiMapDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF558F6D22DDD163005D8200 /* MFRMultiMapDatabase.swift */; };
+		AF558F7122DDD164005D8200 /* MFRMultiMapFileTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF558F6E22DDD163005D8200 /* MFRMultiMapFileTileSource.swift */; };
+		AF558F7222DDD164005D8200 /* MFRMultiMapDataSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF558F6F22DDD164005D8200 /* MFRMultiMapDataSink.swift */; };
+		AFAFC2AF218221B6001C16D5 /* MFRLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2AE218221B6001C16D5 /* MFRLinkedList.swift */; };
+		AFAFC2DE21876595001C16D5 /* MFRDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2C121876595001C16D5 /* MFRDeserializer.swift */; };
+		AFAFC2DF21876595001C16D5 /* MFRQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2C221876595001C16D5 /* MFRQueryResult.swift */; };
+		AFAFC2E021876595001C16D5 /* MFROSMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2C321876595001C16D5 /* MFROSMUtils.swift */; };
+		AFAFC2E221876595001C16D5 /* MFRMapDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2C521876595001C16D5 /* MFRMapDatabase.swift */; };
+		AFAFC2E321876595001C16D5 /* MFROpenResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2C621876595001C16D5 /* MFROpenResults.swift */; };
+		AFAFC2E421876595001C16D5 /* MFRTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2C721876595001C16D5 /* MFRTileSource.swift */; };
+		AFAFC2E521876595001C16D5 /* MFRMapFileTileSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2C821876595001C16D5 /* MFRMapFileTileSource.swift */; };
+		AFAFC2E621876595001C16D5 /* MFRReadBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2C921876595001C16D5 /* MFRReadBuffer.swift */; };
+		AFAFC2E721876595001C16D5 /* MFROptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2CA21876595001C16D5 /* MFROptions.swift */; };
+		AFAFC2E821876595001C16D5 /* MFRQueryCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2CB21876595001C16D5 /* MFRQueryCalculations.swift */; };
+		AFAFC2E921876595001C16D5 /* MFRTileDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2CC21876595001C16D5 /* MFRTileDataSourceProtocol.swift */; };
+		AFAFC2EA21876595001C16D5 /* MFRTileProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2CD21876595001C16D5 /* MFRTileProjection.swift */; };
+		AFAFC2EB21876595001C16D5 /* MFRMapFileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2CE21876595001C16D5 /* MFRMapFileUtils.swift */; };
+		AFAFC2ED21876595001C16D5 /* MFRSubFileParameterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D121876595001C16D5 /* MFRSubFileParameterBuilder.swift */; };
+		AFAFC2EE21876595001C16D5 /* MFRMapFileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D221876595001C16D5 /* MFRMapFileHeader.swift */; };
+		AFAFC2EF21876595001C16D5 /* MFRSubFileParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D321876595001C16D5 /* MFRSubFileParameter.swift */; };
+		AFAFC2F021876595001C16D5 /* MFRMapFileInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D421876595001C16D5 /* MFRMapFileInfoBuilder.swift */; };
+		AFAFC2F121876595001C16D5 /* MFRRequiredFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D521876595001C16D5 /* MFRRequiredFields.swift */; };
+		AFAFC2F221876595001C16D5 /* MFROptionalFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D621876595001C16D5 /* MFROptionalFields.swift */; };
+		AFAFC2F321876595001C16D5 /* MFRMapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D721876595001C16D5 /* MFRMapInfo.swift */; };
+		AFAFC2F421876595001C16D5 /* MFRMapFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D821876595001C16D5 /* MFRMapFileInfo.swift */; };
+		AFAFC2F521876595001C16D5 /* MFRQueryParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2D921876595001C16D5 /* MFRQueryParameters.swift */; };
+		AFAFC2F621876595001C16D5 /* MFRProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2DA21876595001C16D5 /* MFRProjection.swift */; };
+		AFAFC2F721876595001C16D5 /* MFRIndexCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2DB21876595001C16D5 /* MFRIndexCache.swift */; };
+		AFAFC2F821876595001C16D5 /* MFRTileDataSinkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2DC21876595001C16D5 /* MFRTileDataSinkProtocol.swift */; };
+		AFAFC2F921876595001C16D5 /* MFRIndexCacheEntryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFC2DD21876595001C16D5 /* MFRIndexCacheEntryKey.swift */; };
+		AFBFF769217F71A000093F1E /* MapFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFBFF75F217F71A000093F1E /* MapFileReader.framework */; };
+		AFBFF76E217F71A000093F1E /* MapFileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBFF76D217F71A000093F1E /* MapFileReaderTests.swift */; };
+		AFBFF770217F71A000093F1E /* MapFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = AFBFF762217F71A000093F1E /* MapFileReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFFDF14D2180CB1B00067FB1 /* MFRMercatorProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF10D2180CB1A00067FB1 /* MFRMercatorProjection.swift */; };
+		AFFDF14F2180CB1B00067FB1 /* MFRPointF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF10F2180CB1A00067FB1 /* MFRPointF.swift */; };
+		AFFDF1502180CB1B00067FB1 /* MFRBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1102180CB1A00067FB1 /* MFRBoundingBox.swift */; };
+		AFFDF1512180CB1B00067FB1 /* MFRMapElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1112180CB1A00067FB1 /* MFRMapElement.swift */; };
+		AFFDF1522180CB1B00067FB1 /* MFRGeometryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1122180CB1A00067FB1 /* MFRGeometryType.swift */; };
+		AFFDF1532180CB1B00067FB1 /* MFRTagSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1132180CB1A00067FB1 /* MFRTagSet.swift */; };
+		AFFDF1542180CB1B00067FB1 /* MFRPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1142180CB1A00067FB1 /* MFRPoint.swift */; };
+		AFFDF1552180CB1B00067FB1 /* MFRGeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1152180CB1A00067FB1 /* MFRGeoPoint.swift */; };
+		AFFDF1562180CB1B00067FB1 /* MFRTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1162180CB1A00067FB1 /* MFRTag.swift */; };
+		AFFDF1572180CB1B00067FB1 /* MFRGeometryBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1172180CB1A00067FB1 /* MFRGeometryBuffer.swift */; };
+		AFFDF1582180CB1B00067FB1 /* MFRTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1182180CB1A00067FB1 /* MFRTile.swift */; };
+		AFFDF1592180CB1B00067FB1 /* MFRTileDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF11A2180CB1A00067FB1 /* MFRTileDataProtocol.swift */; };
+		AFFDF15B2180CB1B00067FB1 /* MFRState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF11C2180CB1A00067FB1 /* MFRState.swift */; };
+		AFFDF15C2180CB1B00067FB1 /* MFRFadeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF11D2180CB1A00067FB1 /* MFRFadeStep.swift */; };
+		AFFDF15D2180CB1B00067FB1 /* MFRMapTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF11E2180CB1A00067FB1 /* MFRMapTile.swift */; };
+		AFFDF17B2180CB1B00067FB1 /* MFRFastMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1412180CB1A00067FB1 /* MFRFastMath.swift */; };
+		AFFDF17C2180CB1B00067FB1 /* MFRClampableRangeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1422180CB1A00067FB1 /* MFRClampableRangeProtocol.swift */; };
+		AFFDF17D2180CB1B00067FB1 /* MFRTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1432180CB1A00067FB1 /* MFRTreeNode.swift */; };
+		AFFDF17E2180CB1B00067FB1 /* MFRSynchronized.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1442180CB1A00067FB1 /* MFRSynchronized.swift */; };
+		AFFDF17F2180CB1B00067FB1 /* MFRInlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1452180CB1A00067FB1 /* MFRInlist.swift */; };
+		AFFDF1812180CB1B00067FB1 /* MFRTileClipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1482180CB1A00067FB1 /* MFRTileClipper.swift */; };
+		AFFDF1822180CB1B00067FB1 /* MFRLineClipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF1492180CB1B00067FB1 /* MFRLineClipper.swift */; };
+		AFFDF1832180CB1B00067FB1 /* MFRErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF14A2180CB1B00067FB1 /* MFRErrorHandler.swift */; };
+		AFFDF1842180CB1B00067FB1 /* MFRLRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF14B2180CB1B00067FB1 /* MFRLRUCache.swift */; };
+		AFFDF1852180CB1B00067FB1 /* MFRStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDF14C2180CB1B00067FB1 /* MFRStringExtension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AFBFF76A217F71A000093F1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFBFF756217F71A000093F1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFBFF75E217F71A000093F1E;
+			remoteInfo = CMMapFileReader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AF0D9497218C7074005396EF /* MFRTileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MFRTileNode.swift; path = ../utils/MFRTileNode.swift; sourceTree = "<group>"; };
+		AF558F6D22DDD163005D8200 /* MFRMultiMapDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMultiMapDatabase.swift; sourceTree = "<group>"; };
+		AF558F6E22DDD163005D8200 /* MFRMultiMapFileTileSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMultiMapFileTileSource.swift; sourceTree = "<group>"; };
+		AF558F6F22DDD164005D8200 /* MFRMultiMapDataSink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMultiMapDataSink.swift; sourceTree = "<group>"; };
+		AFAFC2AE218221B6001C16D5 /* MFRLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFRLinkedList.swift; sourceTree = "<group>"; };
+		AFAFC2C121876595001C16D5 /* MFRDeserializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRDeserializer.swift; sourceTree = "<group>"; };
+		AFAFC2C221876595001C16D5 /* MFRQueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRQueryResult.swift; sourceTree = "<group>"; };
+		AFAFC2C321876595001C16D5 /* MFROSMUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFROSMUtils.swift; sourceTree = "<group>"; };
+		AFAFC2C521876595001C16D5 /* MFRMapDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapDatabase.swift; sourceTree = "<group>"; };
+		AFAFC2C621876595001C16D5 /* MFROpenResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFROpenResults.swift; sourceTree = "<group>"; };
+		AFAFC2C721876595001C16D5 /* MFRTileSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTileSource.swift; sourceTree = "<group>"; };
+		AFAFC2C821876595001C16D5 /* MFRMapFileTileSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapFileTileSource.swift; sourceTree = "<group>"; };
+		AFAFC2C921876595001C16D5 /* MFRReadBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRReadBuffer.swift; sourceTree = "<group>"; };
+		AFAFC2CA21876595001C16D5 /* MFROptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFROptions.swift; sourceTree = "<group>"; };
+		AFAFC2CB21876595001C16D5 /* MFRQueryCalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRQueryCalculations.swift; sourceTree = "<group>"; };
+		AFAFC2CC21876595001C16D5 /* MFRTileDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTileDataSourceProtocol.swift; sourceTree = "<group>"; };
+		AFAFC2CD21876595001C16D5 /* MFRTileProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTileProjection.swift; sourceTree = "<group>"; };
+		AFAFC2CE21876595001C16D5 /* MFRMapFileUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapFileUtils.swift; sourceTree = "<group>"; };
+		AFAFC2D121876595001C16D5 /* MFRSubFileParameterBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRSubFileParameterBuilder.swift; sourceTree = "<group>"; };
+		AFAFC2D221876595001C16D5 /* MFRMapFileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapFileHeader.swift; sourceTree = "<group>"; };
+		AFAFC2D321876595001C16D5 /* MFRSubFileParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRSubFileParameter.swift; sourceTree = "<group>"; };
+		AFAFC2D421876595001C16D5 /* MFRMapFileInfoBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapFileInfoBuilder.swift; sourceTree = "<group>"; };
+		AFAFC2D521876595001C16D5 /* MFRRequiredFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRRequiredFields.swift; sourceTree = "<group>"; };
+		AFAFC2D621876595001C16D5 /* MFROptionalFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFROptionalFields.swift; sourceTree = "<group>"; };
+		AFAFC2D721876595001C16D5 /* MFRMapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapInfo.swift; sourceTree = "<group>"; };
+		AFAFC2D821876595001C16D5 /* MFRMapFileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapFileInfo.swift; sourceTree = "<group>"; };
+		AFAFC2D921876595001C16D5 /* MFRQueryParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRQueryParameters.swift; sourceTree = "<group>"; };
+		AFAFC2DA21876595001C16D5 /* MFRProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRProjection.swift; sourceTree = "<group>"; };
+		AFAFC2DB21876595001C16D5 /* MFRIndexCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRIndexCache.swift; sourceTree = "<group>"; };
+		AFAFC2DC21876595001C16D5 /* MFRTileDataSinkProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTileDataSinkProtocol.swift; sourceTree = "<group>"; };
+		AFAFC2DD21876595001C16D5 /* MFRIndexCacheEntryKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRIndexCacheEntryKey.swift; sourceTree = "<group>"; };
+		AFBFF75F217F71A000093F1E /* MapFileReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MapFileReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBFF762217F71A000093F1E /* MapFileReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapFileReader.h; sourceTree = "<group>"; };
+		AFBFF763217F71A000093F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFBFF768217F71A000093F1E /* MapFileReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapFileReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBFF76D217F71A000093F1E /* MapFileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFileReaderTests.swift; sourceTree = "<group>"; };
+		AFBFF76F217F71A000093F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFFDF10D2180CB1A00067FB1 /* MFRMercatorProjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMercatorProjection.swift; sourceTree = "<group>"; };
+		AFFDF10F2180CB1A00067FB1 /* MFRPointF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRPointF.swift; sourceTree = "<group>"; };
+		AFFDF1102180CB1A00067FB1 /* MFRBoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRBoundingBox.swift; sourceTree = "<group>"; };
+		AFFDF1112180CB1A00067FB1 /* MFRMapElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapElement.swift; sourceTree = "<group>"; };
+		AFFDF1122180CB1A00067FB1 /* MFRGeometryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRGeometryType.swift; sourceTree = "<group>"; };
+		AFFDF1132180CB1A00067FB1 /* MFRTagSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTagSet.swift; sourceTree = "<group>"; };
+		AFFDF1142180CB1A00067FB1 /* MFRPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRPoint.swift; sourceTree = "<group>"; };
+		AFFDF1152180CB1A00067FB1 /* MFRGeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRGeoPoint.swift; sourceTree = "<group>"; };
+		AFFDF1162180CB1A00067FB1 /* MFRTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTag.swift; sourceTree = "<group>"; };
+		AFFDF1172180CB1A00067FB1 /* MFRGeometryBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRGeometryBuffer.swift; sourceTree = "<group>"; };
+		AFFDF1182180CB1A00067FB1 /* MFRTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTile.swift; sourceTree = "<group>"; };
+		AFFDF11A2180CB1A00067FB1 /* MFRTileDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTileDataProtocol.swift; sourceTree = "<group>"; };
+		AFFDF11C2180CB1A00067FB1 /* MFRState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRState.swift; sourceTree = "<group>"; };
+		AFFDF11D2180CB1A00067FB1 /* MFRFadeStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRFadeStep.swift; sourceTree = "<group>"; };
+		AFFDF11E2180CB1A00067FB1 /* MFRMapTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRMapTile.swift; sourceTree = "<group>"; };
+		AFFDF1412180CB1A00067FB1 /* MFRFastMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRFastMath.swift; sourceTree = "<group>"; };
+		AFFDF1422180CB1A00067FB1 /* MFRClampableRangeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRClampableRangeProtocol.swift; sourceTree = "<group>"; };
+		AFFDF1432180CB1A00067FB1 /* MFRTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTreeNode.swift; sourceTree = "<group>"; };
+		AFFDF1442180CB1A00067FB1 /* MFRSynchronized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRSynchronized.swift; sourceTree = "<group>"; };
+		AFFDF1452180CB1A00067FB1 /* MFRInlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRInlist.swift; sourceTree = "<group>"; };
+		AFFDF1482180CB1A00067FB1 /* MFRTileClipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRTileClipper.swift; sourceTree = "<group>"; };
+		AFFDF1492180CB1B00067FB1 /* MFRLineClipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRLineClipper.swift; sourceTree = "<group>"; };
+		AFFDF14A2180CB1B00067FB1 /* MFRErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRErrorHandler.swift; sourceTree = "<group>"; };
+		AFFDF14B2180CB1B00067FB1 /* MFRLRUCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRLRUCache.swift; sourceTree = "<group>"; };
+		AFFDF14C2180CB1B00067FB1 /* MFRStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFRStringExtension.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFBFF75C217F71A000093F1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFBFF765217F71A000093F1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBFF769217F71A000093F1E /* MapFileReader.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFAFC2C021876595001C16D5 /* tiling */ = {
+			isa = PBXGroup;
+			children = (
+				AFAFC2D021876595001C16D5 /* header */,
+				AFAFC2C121876595001C16D5 /* MFRDeserializer.swift */,
+				AFAFC2DB21876595001C16D5 /* MFRIndexCache.swift */,
+				AFAFC2DD21876595001C16D5 /* MFRIndexCacheEntryKey.swift */,
+				AFAFC2C521876595001C16D5 /* MFRMapDatabase.swift */,
+				AFAFC2C821876595001C16D5 /* MFRMapFileTileSource.swift */,
+				AFAFC2CE21876595001C16D5 /* MFRMapFileUtils.swift */,
+				AF558F6D22DDD163005D8200 /* MFRMultiMapDatabase.swift */,
+				AF558F6F22DDD164005D8200 /* MFRMultiMapDataSink.swift */,
+				AF558F6E22DDD163005D8200 /* MFRMultiMapFileTileSource.swift */,
+				AFAFC2C621876595001C16D5 /* MFROpenResults.swift */,
+				AFAFC2CA21876595001C16D5 /* MFROptions.swift */,
+				AFAFC2C321876595001C16D5 /* MFROSMUtils.swift */,
+				AFAFC2DA21876595001C16D5 /* MFRProjection.swift */,
+				AFAFC2CB21876595001C16D5 /* MFRQueryCalculations.swift */,
+				AFAFC2D921876595001C16D5 /* MFRQueryParameters.swift */,
+				AFAFC2C221876595001C16D5 /* MFRQueryResult.swift */,
+				AFAFC2C921876595001C16D5 /* MFRReadBuffer.swift */,
+				AFAFC2DC21876595001C16D5 /* MFRTileDataSinkProtocol.swift */,
+				AFAFC2CC21876595001C16D5 /* MFRTileDataSourceProtocol.swift */,
+				AFAFC2CD21876595001C16D5 /* MFRTileProjection.swift */,
+				AFAFC2C721876595001C16D5 /* MFRTileSource.swift */,
+			);
+			path = tiling;
+			sourceTree = "<group>";
+		};
+		AFAFC2D021876595001C16D5 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				AFAFC2D221876595001C16D5 /* MFRMapFileHeader.swift */,
+				AFAFC2D821876595001C16D5 /* MFRMapFileInfo.swift */,
+				AFAFC2D421876595001C16D5 /* MFRMapFileInfoBuilder.swift */,
+				AFAFC2D721876595001C16D5 /* MFRMapInfo.swift */,
+				AFAFC2D621876595001C16D5 /* MFROptionalFields.swift */,
+				AFAFC2D521876595001C16D5 /* MFRRequiredFields.swift */,
+				AFAFC2D321876595001C16D5 /* MFRSubFileParameter.swift */,
+				AFAFC2D121876595001C16D5 /* MFRSubFileParameterBuilder.swift */,
+			);
+			path = header;
+			sourceTree = "<group>";
+		};
+		AFBFF755217F71A000093F1E = {
+			isa = PBXGroup;
+			children = (
+				AFBFF761217F71A000093F1E /* MapFileReader */,
+				AFBFF76C217F71A000093F1E /* MapFileReaderTests */,
+				AFBFF760217F71A000093F1E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFBFF760217F71A000093F1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFBFF75F217F71A000093F1E /* MapFileReader.framework */,
+				AFBFF768217F71A000093F1E /* MapFileReaderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFBFF761217F71A000093F1E /* MapFileReader */ = {
+			isa = PBXGroup;
+			children = (
+				AFBFF7F8217F77D700093F1E /* source */,
+				AFBFF762217F71A000093F1E /* MapFileReader.h */,
+				AFBFF763217F71A000093F1E /* Info.plist */,
+			);
+			path = MapFileReader;
+			sourceTree = "<group>";
+		};
+		AFBFF76C217F71A000093F1E /* MapFileReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFBFF76D217F71A000093F1E /* MapFileReaderTests.swift */,
+				AFBFF76F217F71A000093F1E /* Info.plist */,
+			);
+			path = MapFileReaderTests;
+			sourceTree = "<group>";
+		};
+		AFBFF7F8217F77D700093F1E /* source */ = {
+			isa = PBXGroup;
+			children = (
+				AFFDF10C2180CB1A00067FB1 /* core */,
+				AFFDF1192180CB1A00067FB1 /* layers */,
+				AFAFC2C021876595001C16D5 /* tiling */,
+				AFFDF1402180CB1A00067FB1 /* utils */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		AFFDF10C2180CB1A00067FB1 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				AFFDF1102180CB1A00067FB1 /* MFRBoundingBox.swift */,
+				AFFDF1172180CB1A00067FB1 /* MFRGeometryBuffer.swift */,
+				AFFDF1122180CB1A00067FB1 /* MFRGeometryType.swift */,
+				AFFDF1152180CB1A00067FB1 /* MFRGeoPoint.swift */,
+				AFFDF1112180CB1A00067FB1 /* MFRMapElement.swift */,
+				AFFDF10D2180CB1A00067FB1 /* MFRMercatorProjection.swift */,
+				AFFDF1142180CB1A00067FB1 /* MFRPoint.swift */,
+				AFFDF10F2180CB1A00067FB1 /* MFRPointF.swift */,
+				AFFDF1162180CB1A00067FB1 /* MFRTag.swift */,
+				AFFDF1132180CB1A00067FB1 /* MFRTagSet.swift */,
+				AFFDF1182180CB1A00067FB1 /* MFRTile.swift */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		AFFDF1192180CB1A00067FB1 /* layers */ = {
+			isa = PBXGroup;
+			children = (
+				AFFDF11A2180CB1A00067FB1 /* MFRTileDataProtocol.swift */,
+				AFFDF11C2180CB1A00067FB1 /* MFRState.swift */,
+				AFFDF11D2180CB1A00067FB1 /* MFRFadeStep.swift */,
+				AFFDF11E2180CB1A00067FB1 /* MFRMapTile.swift */,
+				AF0D9497218C7074005396EF /* MFRTileNode.swift */,
+			);
+			path = layers;
+			sourceTree = "<group>";
+		};
+		AFFDF1402180CB1A00067FB1 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				AFFDF1472180CB1A00067FB1 /* geom */,
+				AFFDF1422180CB1A00067FB1 /* MFRClampableRangeProtocol.swift */,
+				AFFDF14A2180CB1B00067FB1 /* MFRErrorHandler.swift */,
+				AFFDF1412180CB1A00067FB1 /* MFRFastMath.swift */,
+				AFFDF1452180CB1A00067FB1 /* MFRInlist.swift */,
+				AFAFC2AE218221B6001C16D5 /* MFRLinkedList.swift */,
+				AFFDF14B2180CB1B00067FB1 /* MFRLRUCache.swift */,
+				AFFDF14C2180CB1B00067FB1 /* MFRStringExtension.swift */,
+				AFFDF1442180CB1A00067FB1 /* MFRSynchronized.swift */,
+				AFFDF1432180CB1A00067FB1 /* MFRTreeNode.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		AFFDF1472180CB1A00067FB1 /* geom */ = {
+			isa = PBXGroup;
+			children = (
+				AFFDF1482180CB1A00067FB1 /* MFRTileClipper.swift */,
+				AFFDF1492180CB1B00067FB1 /* MFRLineClipper.swift */,
+			);
+			path = geom;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AFBFF75A217F71A000093F1E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBFF770217F71A000093F1E /* MapFileReader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AFBFF75E217F71A000093F1E /* MapFileReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFBFF773217F71A000093F1E /* Build configuration list for PBXNativeTarget "MapFileReader" */;
+			buildPhases = (
+				AFBFF75A217F71A000093F1E /* Headers */,
+				AFBFF75B217F71A000093F1E /* Sources */,
+				AFBFF75C217F71A000093F1E /* Frameworks */,
+				AFBFF75D217F71A000093F1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapFileReader;
+			productName = CMMapFileReader;
+			productReference = AFBFF75F217F71A000093F1E /* MapFileReader.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AFBFF767217F71A000093F1E /* MapFileReaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFBFF776217F71A000093F1E /* Build configuration list for PBXNativeTarget "MapFileReaderTests" */;
+			buildPhases = (
+				AFBFF764217F71A000093F1E /* Sources */,
+				AFBFF765217F71A000093F1E /* Frameworks */,
+				AFBFF766217F71A000093F1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFBFF76B217F71A000093F1E /* PBXTargetDependency */,
+			);
+			name = MapFileReaderTests;
+			productName = CMMapFileReaderTests;
+			productReference = AFBFF768217F71A000093F1E /* MapFileReaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFBFF756217F71A000093F1E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "calimoto GmbH";
+				TargetAttributes = {
+					AFBFF75E217F71A000093F1E = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					AFBFF767217F71A000093F1E = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = AFBFF759217F71A000093F1E /* Build configuration list for PBXProject "MapFileReader" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AFBFF755217F71A000093F1E;
+			productRefGroup = AFBFF760217F71A000093F1E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFBFF75E217F71A000093F1E /* MapFileReader */,
+				AFBFF767217F71A000093F1E /* MapFileReaderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFBFF75D217F71A000093F1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFBFF766217F71A000093F1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFBFF75B217F71A000093F1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFFDF1842180CB1B00067FB1 /* MFRLRUCache.swift in Sources */,
+				AFFDF17E2180CB1B00067FB1 /* MFRSynchronized.swift in Sources */,
+				AFFDF1582180CB1B00067FB1 /* MFRTile.swift in Sources */,
+				AFAFC2E921876595001C16D5 /* MFRTileDataSourceProtocol.swift in Sources */,
+				AFAFC2E421876595001C16D5 /* MFRTileSource.swift in Sources */,
+				AFFDF1552180CB1B00067FB1 /* MFRGeoPoint.swift in Sources */,
+				AFFDF1562180CB1B00067FB1 /* MFRTag.swift in Sources */,
+				AFFDF1512180CB1B00067FB1 /* MFRMapElement.swift in Sources */,
+				AFFDF1542180CB1B00067FB1 /* MFRPoint.swift in Sources */,
+				AF558F7122DDD164005D8200 /* MFRMultiMapFileTileSource.swift in Sources */,
+				AFFDF1502180CB1B00067FB1 /* MFRBoundingBox.swift in Sources */,
+				AFFDF15C2180CB1B00067FB1 /* MFRFadeStep.swift in Sources */,
+				AFFDF1522180CB1B00067FB1 /* MFRGeometryType.swift in Sources */,
+				AFAFC2F221876595001C16D5 /* MFROptionalFields.swift in Sources */,
+				AFFDF1812180CB1B00067FB1 /* MFRTileClipper.swift in Sources */,
+				AFFDF1852180CB1B00067FB1 /* MFRStringExtension.swift in Sources */,
+				AFAFC2EB21876595001C16D5 /* MFRMapFileUtils.swift in Sources */,
+				AFFDF1592180CB1B00067FB1 /* MFRTileDataProtocol.swift in Sources */,
+				AFFDF17C2180CB1B00067FB1 /* MFRClampableRangeProtocol.swift in Sources */,
+				AFFDF1832180CB1B00067FB1 /* MFRErrorHandler.swift in Sources */,
+				AFAFC2E221876595001C16D5 /* MFRMapDatabase.swift in Sources */,
+				AFAFC2E721876595001C16D5 /* MFROptions.swift in Sources */,
+				AFAFC2F821876595001C16D5 /* MFRTileDataSinkProtocol.swift in Sources */,
+				AFAFC2EF21876595001C16D5 /* MFRSubFileParameter.swift in Sources */,
+				AFAFC2AF218221B6001C16D5 /* MFRLinkedList.swift in Sources */,
+				AFAFC2F121876595001C16D5 /* MFRRequiredFields.swift in Sources */,
+				AFFDF1532180CB1B00067FB1 /* MFRTagSet.swift in Sources */,
+				AFAFC2E821876595001C16D5 /* MFRQueryCalculations.swift in Sources */,
+				AFAFC2E021876595001C16D5 /* MFROSMUtils.swift in Sources */,
+				AFFDF15B2180CB1B00067FB1 /* MFRState.swift in Sources */,
+				AFAFC2EA21876595001C16D5 /* MFRTileProjection.swift in Sources */,
+				AFAFC2F621876595001C16D5 /* MFRProjection.swift in Sources */,
+				AFFDF1572180CB1B00067FB1 /* MFRGeometryBuffer.swift in Sources */,
+				AFFDF17D2180CB1B00067FB1 /* MFRTreeNode.swift in Sources */,
+				AFFDF14D2180CB1B00067FB1 /* MFRMercatorProjection.swift in Sources */,
+				AFAFC2DE21876595001C16D5 /* MFRDeserializer.swift in Sources */,
+				AFFDF17F2180CB1B00067FB1 /* MFRInlist.swift in Sources */,
+				AFAFC2EE21876595001C16D5 /* MFRMapFileHeader.swift in Sources */,
+				AFAFC2F421876595001C16D5 /* MFRMapFileInfo.swift in Sources */,
+				AFAFC2F021876595001C16D5 /* MFRMapFileInfoBuilder.swift in Sources */,
+				AF558F7222DDD164005D8200 /* MFRMultiMapDataSink.swift in Sources */,
+				AFAFC2E621876595001C16D5 /* MFRReadBuffer.swift in Sources */,
+				AFAFC2ED21876595001C16D5 /* MFRSubFileParameterBuilder.swift in Sources */,
+				AFFDF14F2180CB1B00067FB1 /* MFRPointF.swift in Sources */,
+				AF0D9498218C7074005396EF /* MFRTileNode.swift in Sources */,
+				AFFDF15D2180CB1B00067FB1 /* MFRMapTile.swift in Sources */,
+				AFAFC2F521876595001C16D5 /* MFRQueryParameters.swift in Sources */,
+				AFFDF1822180CB1B00067FB1 /* MFRLineClipper.swift in Sources */,
+				AFAFC2F321876595001C16D5 /* MFRMapInfo.swift in Sources */,
+				AFAFC2F921876595001C16D5 /* MFRIndexCacheEntryKey.swift in Sources */,
+				AFFDF17B2180CB1B00067FB1 /* MFRFastMath.swift in Sources */,
+				AFAFC2E521876595001C16D5 /* MFRMapFileTileSource.swift in Sources */,
+				AFAFC2DF21876595001C16D5 /* MFRQueryResult.swift in Sources */,
+				AF558F7022DDD164005D8200 /* MFRMultiMapDatabase.swift in Sources */,
+				AFAFC2F721876595001C16D5 /* MFRIndexCache.swift in Sources */,
+				AFAFC2E321876595001C16D5 /* MFROpenResults.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFBFF764217F71A000093F1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBFF76E217F71A000093F1E /* MapFileReaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFBFF76B217F71A000093F1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFBFF75E217F71A000093F1E /* MapFileReader */;
+			targetProxy = AFBFF76A217F71A000093F1E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AFBFF771217F71A000093F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AFBFF772217F71A000093F1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AFBFF774217F71A000093F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MapFileReader/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.calimoto.MapFileReader;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AFBFF775217F71A000093F1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MapFileReader/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.calimoto.MapFileReader;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AFBFF777217F71A000093F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SBSL89MA27;
+				INFOPLIST_FILE = MapFileReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.calimoto.MapFileReaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AFBFF778217F71A000093F1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SBSL89MA27;
+				INFOPLIST_FILE = MapFileReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.calimoto.MapFileReaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFBFF759217F71A000093F1E /* Build configuration list for PBXProject "MapFileReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFBFF771217F71A000093F1E /* Debug */,
+				AFBFF772217F71A000093F1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFBFF773217F71A000093F1E /* Build configuration list for PBXNativeTarget "MapFileReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFBFF774217F71A000093F1E /* Debug */,
+				AFBFF775217F71A000093F1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFBFF776217F71A000093F1E /* Build configuration list for PBXNativeTarget "MapFileReaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFBFF777217F71A000093F1E /* Debug */,
+				AFBFF778217F71A000093F1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFBFF756217F71A000093F1E /* Project object */;
+}
