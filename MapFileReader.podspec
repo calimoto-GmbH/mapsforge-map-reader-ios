@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name = "MapFileReader"
-s.summary = "MapFileReader will be used to read Mapsforge map files."
+s.summary = "MapFileReader will be used to read Mapsforge-map files."
 
 s.version = "0.0.1"
 s.license = { :type => "Proprietary", :file => "COPYING" }
