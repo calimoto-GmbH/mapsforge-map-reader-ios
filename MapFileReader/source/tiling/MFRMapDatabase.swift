@@ -196,7 +196,7 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
         mTileProjection.setTile(tile: tile)
 
         /* size of tile in map coordinates */
-        let size: Double = 1.0 / Double(1 << Int(tile.zoomLevel))
+        let size: Double = 1.0 / Double(1 << tile.zoomLevel)
 
         /* simplification tolerance */
         let pixel: Int = (tile.zoomLevel > 11) ? 1 : 2
@@ -363,99 +363,99 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
             throw MFRErrorHandler.IllegalArgumentException(
                 "The database cache from the tile source is invalid! (processBlocks)")
         }
+        
+        guard queryParams.fromBlockY <= queryParams.toBlockY &&
+            queryParams.fromBlockX <= queryParams.toBlockX else { return }
 
         /* read and process all blocks from top to bottom and from left to right */
         //    for (long row = queryParams.fromBlockY row <= queryParams.toBlockY row++) {
-        if queryParams.fromBlockY <= queryParams.toBlockY &&
-            queryParams.fromBlockX <= queryParams.toBlockX {
-            for row in queryParams.fromBlockY ... queryParams.toBlockY
+        for row in queryParams.fromBlockY ... queryParams.toBlockY
+        {
+            //    for (long column = queryParams.fromBlockX column <= queryParams.toBlockX column++) {
+            for column in queryParams.fromBlockX ... queryParams.toBlockX
             {
-                //    for (long column = queryParams.fromBlockX column <= queryParams.toBlockX column++) {
-                for column in queryParams.fromBlockX ... queryParams.toBlockX
-                {
-                    setTileClipping(queryParameters: queryParams,
-                                    mCurrentRow: row - queryParams.fromBlockY,
-                                    mCurrentCol: column - queryParams.fromBlockX)
-
-                    /* calculate the actual block number of the needed block in the
-                     * file */
-                    let blockNumber: Int = row * subFileParameter.blocksWidth + column
-
-                    /* get the current index entry */
-                    let blockIndexEntry: Int =
-                        try mTileSource.databaseIndexCache!.getIndexEntry(subFileParameter: subFileParameter,
-                                                                          blockNumber: blockNumber)
-
-                    /* get and check the current block pointer */
-                    let blockPointer: Int = blockIndexEntry & MFRMapDatabase.BITMASK_INDEX_OFFSET
-                    if blockPointer < 1 || blockPointer > subFileParameter.subFileSize {
-                        printN("invalid current block pointer: \(blockPointer)")
-                        printN("subFileSize: \(subFileParameter.subFileSize)")
-                        return
-                    }
-
-                    var nextBlockPointer: Int!
-                    /* check if the current block is the last block in the file */
-                    if ( blockNumber + 1 == subFileParameter.numberOfBlocks ) {
-                        /* set the next block pointer to the end of the file */
-                        nextBlockPointer = subFileParameter.subFileSize
-                    } else {
-                        /* get and check the next block pointer */
-                        nextBlockPointer =
-                            try mTileSource.databaseIndexCache!.getIndexEntry(subFileParameter: subFileParameter,
-                                                                              blockNumber: blockNumber + 1)
-                        nextBlockPointer = nextBlockPointer & MFRMapDatabase.BITMASK_INDEX_OFFSET
-
-                        if nextBlockPointer < 1 || nextBlockPointer > subFileParameter.subFileSize {
-                            printN("invalid next block pointer: \(String(describing: nextBlockPointer))")
-                            printN("sub-file size: \(subFileParameter.subFileSize)")
-                            return
-                        }
-                    }
-
-                    /* calculate the size of the current block */
-                    let blockSize: Int = nextBlockPointer - blockPointer
-                    if blockSize < 0 {
-                        printN("current block size must not be negative: \(blockSize)")
-                        return
-                    } else if blockSize == 0 {
-                        /* the current block is empty, continue with the next block */
-                        continue
-                    } else if blockSize > MFRReadBuffer.MAXIMUM_BUFFER_SIZE {
-                        /* the current block is too large, continue with the next
-                         * block */
-                        printN("current block size too large: \(blockSize)")
-                        continue
-                    } else if blockPointer + blockSize > mFileSize {
-                        printN("current block larger than file size: \(blockSize)")
-                        return
-                    }
-
-                    /* seek to the current block in the map file */
-                    mInputFile?.seek(toFileOffset: UInt64(subFileParameter.startAddress + blockPointer))
-
-                    /* read the current block into the buffer */
-                    if !mReadBuffer.readFromFile(blockSize) {
-                        /* skip the current block */
-                        printN("reading current block has failed: \(blockSize)")
-                        return
-                    }
-
-                    /* calculate the top-left coordinates of the underlying tile */
-                    let mTileLatitudeDeg: Double =
-                        MFRProjection.tileYToLatitude(tileY: subFileParameter.boundaryTileTop + row,
-                                                     zoomLevel: subFileParameter.baseZoomLevel)
-                    let mTileLongitudeDeg: Double =
-                        MFRProjection.tileXToLongitude(tileX: subFileParameter.boundaryTileLeft + column,
-                                                      zoomLevel: subFileParameter.baseZoomLevel)
-
-                    mTileLatitude = Int(mTileLatitudeDeg * 1E6)
-                    mTileLongitude = Int(mTileLongitudeDeg * 1E6)
-
-                    try processBlock(queryParameters: queryParams,
-                                     subFileParameter: subFileParameter,
-                                     mapDataSink: mapDataSink)
+                setTileClipping(queryParameters: queryParams,
+                                mCurrentRow: row - queryParams.fromBlockY,
+                                mCurrentCol: column - queryParams.fromBlockX)
+                
+                /* calculate the actual block number of the needed block in the
+                 * file */
+                let blockNumber: Int = row * subFileParameter.blocksWidth + column
+                
+                /* get the current index entry */
+                let blockIndexEntry: Int =
+                    try mTileSource.databaseIndexCache!.getIndexEntry(subFileParameter: subFileParameter,
+                                                                      blockNumber: blockNumber)
+                
+                /* get and check the current block pointer */
+                let blockPointer: Int = blockIndexEntry & MFRMapDatabase.BITMASK_INDEX_OFFSET
+                if blockPointer < 1 || blockPointer > subFileParameter.subFileSize {
+                    printN("invalid current block pointer: \(blockPointer)")
+                    printN("subFileSize: \(subFileParameter.subFileSize)")
+                    return
                 }
+                
+                var nextBlockPointer: Int!
+                /* check if the current block is the last block in the file */
+                if ( blockNumber + 1 == subFileParameter.numberOfBlocks ) {
+                    /* set the next block pointer to the end of the file */
+                    nextBlockPointer = subFileParameter.subFileSize
+                } else {
+                    /* get and check the next block pointer */
+                    nextBlockPointer =
+                        try mTileSource.databaseIndexCache!.getIndexEntry(subFileParameter: subFileParameter,
+                                                                          blockNumber: blockNumber + 1)
+                    nextBlockPointer = nextBlockPointer & MFRMapDatabase.BITMASK_INDEX_OFFSET
+                    
+                    if nextBlockPointer < 1 || nextBlockPointer > subFileParameter.subFileSize {
+                        printN("invalid next block pointer: \(String(describing: nextBlockPointer))")
+                        printN("sub-file size: \(subFileParameter.subFileSize)")
+                        return
+                    }
+                }
+                
+                /* calculate the size of the current block */
+                let blockSize: Int = nextBlockPointer - blockPointer
+                if blockSize < 0 {
+                    printN("current block size must not be negative: \(blockSize)")
+                    return
+                } else if blockSize == 0 {
+                    /* the current block is empty, continue with the next block */
+                    continue
+                } else if blockSize > MFRReadBuffer.MAXIMUM_BUFFER_SIZE {
+                    /* the current block is too large, continue with the next
+                     * block */
+                    printN("current block size too large: \(blockSize)")
+                    continue
+                } else if blockPointer + blockSize > mFileSize {
+                    printN("current block larger than file size: \(blockSize)")
+                    return
+                }
+                
+                /* seek to the current block in the map file */
+                mInputFile?.seek(toFileOffset: UInt64(subFileParameter.startAddress + blockPointer))
+                
+                /* read the current block into the buffer */
+                if !mReadBuffer.readFromFile(blockSize) {
+                    /* skip the current block */
+                    printN("reading current block has failed: \(blockSize)")
+                    return
+                }
+                
+                /* calculate the top-left coordinates of the underlying tile */
+                let mTileLatitudeDeg: Double =
+                    MFRProjection.tileYToLatitude(tileY: subFileParameter.boundaryTileTop + row,
+                                                  zoomLevel: subFileParameter.baseZoomLevel)
+                let mTileLongitudeDeg: Double =
+                    MFRProjection.tileXToLongitude(tileX: subFileParameter.boundaryTileLeft + column,
+                                                   zoomLevel: subFileParameter.baseZoomLevel)
+                
+                mTileLatitude = Int(mTileLatitudeDeg * 1E6)
+                mTileLongitude = Int(mTileLongitudeDeg * 1E6)
+                
+                try processBlock(queryParameters: queryParams,
+                                 subFileParameter: subFileParameter,
+                                 mapDataSink: mapDataSink)
             }
         }
     }
@@ -739,7 +739,7 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
             var elementCounter = numberOfWays/* -1*/
 //            printN("number of ways = \(numberOfWays)")
             while elementCounter != 0 {
-                var numTags: Int = 0
+                e.tags.clear()
 
                 if queryParameters.useTileBitmask {
                     elementCounter = try mReadBuffer.skipWays(queryParameters.queryTileBitmask,
@@ -770,10 +770,7 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                                          numberOfTags: numberOfTags)) {
                             return false
                         }
-
-
-                        numTags = numberOfTags
-
+                        
                         mReadBuffer.setBufferPosition(pos)
                     }
                 } else {
@@ -806,8 +803,6 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                                                numberOfTags: numberOfTags)) {
                         return false
                     }
-
-                    numTags = Int(numberOfTags)
                 }
 
                 /* get the feature bitmask (1 byte) */
