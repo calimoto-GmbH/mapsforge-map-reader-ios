@@ -87,7 +87,7 @@ class MFRTileClipper {
             }
             geom.index[numLines] = -1
 
-            var pts: [Float] = geom.ensurePointSize(size_: out_.pointPos >> 1, copy: false)
+            let pts = geom.ensurePointSize(size_: out_.pointPos >> 1, copy: false)
             for i in 0 ..< out_.pointPos {
                 pts[i] = out_.points[i]
             }
