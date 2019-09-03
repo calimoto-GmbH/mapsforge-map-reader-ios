@@ -37,7 +37,8 @@ public class MFRGeometryBuffer {
     /**
      The relative points of the mapsforge
      */
-    internal(set) public var points: [Float]
+    internal(set) public var points: UnsafeMutableBufferPointer<Float>
+    internal(set) public var _points: [Float]
 
     /**
      The indexes.
@@ -84,12 +85,13 @@ public class MFRGeometryBuffer {
     init(points: [Float], index: [Int]) {
         if points.isEmpty
         {
-            self.points = [Float](repeating: 0, count: MFRGeometryBuffer.GROW_POINTS)
+            self._points = [Float](repeating: 0, count: MFRGeometryBuffer.GROW_POINTS)
         }
         else
         {
-            self.points = points
+            self._points = points
         }
+        self.points = UnsafeMutableBufferPointer<Float>(start: &self._points, count: self._points.count)
 
         if index.isEmpty
         {
@@ -262,7 +264,7 @@ public class MFRGeometryBuffer {
      - Return: the float[] array holding current coordinates
      */
     @discardableResult
-    func ensurePointSize(size_: Int, copy: Bool) -> [Float] {
+    func ensurePointSize(size_: Int, copy: Bool) -> UnsafeMutableBufferPointer<Float> {
         var size = size_
         if size * 2 < (points.count) {
             return points
@@ -273,15 +275,16 @@ public class MFRGeometryBuffer {
         var newPoints: [Float] = [Float](repeating: 0, count: size)
         if copy
         {
-            for i in 0 ..< points.count
+            for i in 0 ..< _points.count
             {
-                newPoints[i] = (points[i])
+                newPoints[i] = (_points[i])
             }
         }
 
-        points = newPoints
+        _points = newPoints
         pointLimit = size - 2
-
+        
+        points = UnsafeMutableBufferPointer(start: &_points, count: _points.count)
         return points
     }
 
@@ -450,7 +453,7 @@ public class MFRGeometryBuffer {
     }
 
     public static func == (lhs: MFRGeometryBuffer, rhs: MFRGeometryBuffer) -> Bool {
-        return lhs.points == rhs.points &&
+        return lhs._points == rhs._points &&
             lhs.getNumPoints() == rhs.getNumPoints() &&
             lhs.index == rhs.index &&
             lhs.type == rhs.type

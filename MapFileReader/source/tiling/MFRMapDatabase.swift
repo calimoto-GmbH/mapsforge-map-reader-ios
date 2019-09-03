@@ -619,10 +619,10 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                                 e: MFRMapElement,
                                 length: Int,
                                 isLine: Bool) throws -> Int {
-        var buffer: [Int] = mIntBuffer
-        try mReadBuffer.readSignedInt(&buffer, length: length)
+        try mReadBuffer.readSignedInt(&mIntBuffer, length: length)
+        let buffer = UnsafeBufferPointer<Int>(start: &mIntBuffer, count: mIntBuffer.count)
 
-        _ = e.ensurePointSize(size_: e.pointPos + length, copy: true)
+        let outBuffer = e.ensurePointSize(size_: e.pointPos + length, copy: true)
         var outPos: Int = e.pointPos
         var lat, lon: Int
 
@@ -632,9 +632,9 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
         lon = mTileLongitude + buffer[1]
         let firstLon: Int = lon
 
-        e.points[outPos] = Float(lon) // copy the data in e.points
+        outBuffer[outPos] = Float(lon) // copy the data in e.points
         outPos += 1
-        e.points[outPos] = Float(lat)
+        outBuffer[outPos] = Float(lat)
         outPos += 1
 
         var cnt: Int = 2
@@ -659,9 +659,9 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                 let line: Bool = isLine || (lon != firstLon && lat != firstLat)
 
                 if line {
-                    e.points[outPos] = Float(lon) // copy the data in e.points
+                    outBuffer[outPos] = Float(lon) // copy the data in e.points
                     outPos += 1
-                    e.points[outPos] = Float(lat)
+                    outBuffer[outPos] = Float(lat)
                     outPos += 1
                     cnt += 2
                 }
@@ -677,9 +677,9 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                  || e.tags.contains("natural", "nosea"))*/ {
                     // Avoid additional simplification
                     // https://github.com/mapsforge/vtm/issues/39
-                    e.points[outPos] = Float(lon) // copy the data in e.points
+                    outBuffer[outPos] = Float(lon) // copy the data in e.points
                     outPos += 1
-                    e.points[outPos] = Float(lat)
+                    outBuffer[outPos] = Float(lat)
                     outPos += 1
                     cnt += 2
             }

@@ -74,7 +74,7 @@ public class MFRTileProjection {
 
     public func project(e: inout MFRMapElement)
     {
-        var coords: [Float] = e.points
+        let coords = e.points
         var indices: [Int] = e.index
 
         var inPos: Int = 0
