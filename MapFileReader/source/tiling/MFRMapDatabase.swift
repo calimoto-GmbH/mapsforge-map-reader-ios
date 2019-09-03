@@ -881,7 +881,6 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
 
                     /* drop invalid outer ring */
                     if e.isPoly() && e.index[0] < 6 {
-                        elementCounter -= 1
                         continue
                     }
 
@@ -893,12 +892,10 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                             let clipping = try mTileClipper.clip(geom: &geoBuffer)
                             e = geoBuffer as! MFRMapElement
                             if !clipping {
-                                elementCounter -= 1
                                 continue
                             }
                         } catch {
                             printN("element: \(e) could not be clipped.\n\(error.localizedDescription)\n\(error)")
-                            elementCounter -= 1
                             continue
                         }
                     }

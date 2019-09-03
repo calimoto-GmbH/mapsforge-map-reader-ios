@@ -180,15 +180,15 @@ public class MFRGeometryBuffer {
         /* ignore */
         if (index[indexPos]) > 0 {
 
-            indexPos += 1
             /* start next */
-            if ((index[0]) >= 0) && ((indexPos) >= (index.count)) {
-                ensureIndexSize(size: indexPos, copy: true)
+            if ((index[0]) >= 0) {
+                indexPos += 1
+                if indexPos >= index.count {
+                    ensureIndexSize(size: indexPos, copy: true)
+                }
+                /* initialize with zero points */
+                index[indexPos] = 0
             }
-
-
-            /* initialize with zero points */
-            index[indexPos] = 0
         }
 
         /* set new end marker */
@@ -376,12 +376,8 @@ public class MFRGeometryBuffer {
             var cnt: Int = 2
 
             let end = index[idx]
-            for pt in 2 ..< end
+            for pt in stride(from: 2, to: end, by: 2)
             {
-                if pt % 2 != 0
-                {
-                    continue
-                }
                 inPos = inPos + 2
                 let cx: Float = points[inPos-2]
                 let cy: Float = points[inPos-1]
@@ -389,7 +385,7 @@ public class MFRGeometryBuffer {
                 let dy: Float = cy - py
 
                 if (dx * dx + dy * dy) < minSqDist {
-                    if keepLines || (pt < end - 2) {
+                    if !keepLines || (pt < end - 2) {
                         continue
                     }
 
