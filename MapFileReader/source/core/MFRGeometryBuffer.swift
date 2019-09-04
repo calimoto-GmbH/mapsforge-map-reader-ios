@@ -43,7 +43,8 @@ public class MFRGeometryBuffer {
     /**
      The indexes.
      */
-    internal(set) public var index: [Int]
+    internal(set) public var index: UnsafeMutableBufferPointer<Int>
+    internal(set) public var _index: [Int]
 
     /**
      The current index position.
@@ -95,12 +96,13 @@ public class MFRGeometryBuffer {
 
         if index.isEmpty
         {
-            self.index = [Int](repeating: 0, count: MFRGeometryBuffer.GROW_INDICES)
+            self._index = [Int](repeating: 0, count: MFRGeometryBuffer.GROW_INDICES)
         }
         else
         {
-            self.index = index
+            self._index = index
         }
+        self.index = UnsafeMutableBufferPointer<Int>(start: &self._index, count: self._index.count)
         self.type = MFRGeometryType.NONE
         self.indexPos = 0
         self.pointPos = 0
@@ -296,7 +298,7 @@ public class MFRGeometryBuffer {
      - Return: the short[] array holding current index
      */
     @discardableResult
-    func ensureIndexSize(size: Int, copy: Bool) -> [Int] {
+    func ensureIndexSize(size: Int, copy: Bool) -> UnsafeMutableBufferPointer<Int> {
         if size < (index.count) {
             return index
         }
@@ -305,14 +307,14 @@ public class MFRGeometryBuffer {
         var newIndex: [Int] = [Int](repeating: 0, count: size + MFRGeometryBuffer.GROW_INDICES)
         if copy
         {
-            for i in 0 ..< index.count
+            for i in 0 ..< _index.count
             {
-                newIndex[i] = (index[i])
+                newIndex[i] = (_index[i])
             }
         }
 
-        index = newIndex
-
+        _index = newIndex
+        index = UnsafeMutableBufferPointer(start: &_index, count: _index.count)
         return index
     }
 
@@ -354,27 +356,29 @@ public class MFRGeometryBuffer {
     func simplify(minSqDist: Float, keepLines: Bool) {
         var outPos: Int = 0
         var inPos: Int = 0
-        for idx in 0 ..< (index.count) {
+        var idx = 0
+        while idx < index.count {
             if (index[idx]) < 0 {
                 break
             }
-
+            
             if index[idx] == 0 {
+                idx += 1
                 continue
             }
-
-
+            
+            
             let first: Int = inPos
             inPos = inPos + 2
             var px: Float = points[inPos - 2]
             var py: Float = points[inPos - 1]
-
+            
             outPos = outPos + 2
             /* add first point */
             points[outPos - 2] = px
             points[outPos - 1] = py
             var cnt: Int = 2
-
+            
             let end = index[idx]
             for pt in stride(from: 2, to: end, by: 2)
             {
@@ -383,12 +387,11 @@ public class MFRGeometryBuffer {
                 let cy: Float = points[inPos-1]
                 let dx: Float = cx - px
                 let dy: Float = cy - py
-
+                
                 if (dx * dx + dy * dy) < minSqDist {
                     if !keepLines || (pt < end - 2) {
                         continue
                     }
-
                 }
                 px = cx
                 py = cy
@@ -406,6 +409,7 @@ public class MFRGeometryBuffer {
                 outPos -= 2
             }
             index[idx] = cnt
+            idx += 1
         }
     }
 
@@ -451,7 +455,7 @@ public class MFRGeometryBuffer {
     public static func == (lhs: MFRGeometryBuffer, rhs: MFRGeometryBuffer) -> Bool {
         return lhs._points == rhs._points &&
             lhs.getNumPoints() == rhs.getNumPoints() &&
-            lhs.index == rhs.index &&
+            lhs._index == rhs._index &&
             lhs.type == rhs.type
     }
 }

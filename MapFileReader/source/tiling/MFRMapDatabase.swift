@@ -236,7 +236,6 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
             mapDataSink.completed(result: MFRQueryResult.FAILED)
             return
         }
-
         mapDataSink.completed(result: MFRQueryResult.SUCCESS)
     }
 
@@ -564,7 +563,7 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
         return false
     }
 
-    private func processWayDataBlock(e: inout MFRMapElement,
+    private func processWayDataBlock(e: MFRMapElement,
                                      doubleDeltaEncoding: Bool,
                                      isLine: Bool) -> Bool {
 
@@ -576,10 +575,9 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                 return false;
             }
 
-            var wayLengths: [Int] = e.ensureIndexSize(size: numBlocks, copy: false)
+            let wayLengths = e.ensureIndexSize(size: numBlocks, copy: false)
             if wayLengths.count > numBlocks {
                 wayLengths[numBlocks] = -1
-                e.index[numBlocks] = wayLengths[numBlocks]
             }
 
 
@@ -601,7 +599,6 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                                                                  e: e,
                                                                  length: len,
                                                                  isLine: isLine)
-                e.index[coordinateBlock] = wayLengths[coordinateBlock]
             }
 
             return true
@@ -709,7 +706,7 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
 
         do {
             let wayTags: [MFRTag] = mTileSource.fileInfo!.wayTags!
-            var e: MFRMapElement = mElem
+            let e: MFRMapElement = mElem
 
             var wayDataBlocks: Int
 
@@ -875,7 +872,7 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                 {
                     e.clear()
 
-                    if !processWayDataBlock(e: &e, doubleDeltaEncoding: featureWayDoubleDeltaEncoding, isLine: linearFeature) {
+                    if !processWayDataBlock(e: e, doubleDeltaEncoding: featureWayDoubleDeltaEncoding, isLine: linearFeature) {
                         return false
                     }
 
@@ -884,13 +881,11 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                         continue
                     }
 
-                    mTileProjection.project(e: &e)
+                    mTileProjection.project(e: e)
 
                     if !e.tags.containsKey("building") {
                         do {
-                            var geoBuffer: MFRGeometryBuffer = e
-                            let clipping = try mTileClipper.clip(geom: &geoBuffer)
-                            e = geoBuffer as! MFRMapElement
+                            let clipping = try mTileClipper.clip(geom: e)
                             if !clipping {
                                 continue
                             }

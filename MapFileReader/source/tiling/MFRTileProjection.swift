@@ -72,10 +72,10 @@ public class MFRTileProjection {
         return Float(lon / divx - Double(dx))
     }
 
-    public func project(e: inout MFRMapElement)
+    public func project(e: MFRMapElement)
     {
         let coords = e.points
-        var indices: [Int] = e.index
+        let indices = e.index
 
         var inPos: Int = 0
         var outPos: Int = 0
@@ -123,12 +123,10 @@ public class MFRTileProjection {
                 }
                 pLon = lon
                 coords[outPos] = pLon
-                e.points[outPos] = coords[outPos]
                 outPos += 1
 
                 pLat = lat
                 coords[outPos] = pLat
-                e.points[outPos] = coords[outPos]
                 outPos += 1
 
                 cnt += 2

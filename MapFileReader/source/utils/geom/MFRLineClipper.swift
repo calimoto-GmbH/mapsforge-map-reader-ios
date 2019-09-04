@@ -220,7 +220,7 @@ class MFRLineClipper {
         return accept
     }
 
-    func clipLine(in_: MFRGeometryBuffer, out_: inout MFRGeometryBuffer) throws -> Int{
+    func clipLine(in_: MFRGeometryBuffer, out_: MFRGeometryBuffer) throws -> Int{
         out_.clear()
         var pointPos: Int = 0
         var numLines: Int = 0

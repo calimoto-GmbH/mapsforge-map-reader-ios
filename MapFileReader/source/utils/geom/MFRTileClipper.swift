@@ -53,22 +53,22 @@ class MFRTileClipper {
 
     private let mGeomOut: MFRGeometryBuffer = MFRGeometryBuffer(numPoints: 10, numIndices: 1)
 
-    func clip(geom: inout MFRGeometryBuffer) throws -> Bool {
+    func clip(geom: MFRGeometryBuffer) throws -> Bool {
         if geom.isPoly() {
 
             var out: MFRGeometryBuffer = mGeomOut
             out.clear()
 
-            try clipEdge(in: &geom, out: &out, edge: MFRLineClipper.LEFT)
+            try clipEdge(in: geom, out: out, edge: MFRLineClipper.LEFT)
             geom.clear()
 
-            try clipEdge(in: &out, out: &geom, edge: MFRLineClipper.TOP)
+            try clipEdge(in: out, out: geom, edge: MFRLineClipper.TOP)
             out.clear()
 
-            try clipEdge(in: &geom, out: &out, edge: MFRLineClipper.RIGHT)
+            try clipEdge(in: geom, out: out, edge: MFRLineClipper.RIGHT)
             geom.clear()
 
-            try clipEdge(in: &out, out: &geom, edge: MFRLineClipper.BOTTOM)
+            try clipEdge(in: out, out: geom, edge: MFRLineClipper.BOTTOM)
 
             if (geom.indexPos == 0) && (geom.index[0] < 6) {
                 return false
@@ -79,9 +79,9 @@ class MFRTileClipper {
             var out_: MFRGeometryBuffer = mGeomOut
             out_.clear()
 
-            let numLines: Int = try mLineClipper!.clipLine(in_: geom, out_: &out_)
+            let numLines: Int = try mLineClipper!.clipLine(in_: geom, out_: out_)
 
-            var idx: [Int] = geom.ensureIndexSize(size: numLines + 1, copy: false)
+            let idx = geom.ensureIndexSize(size: numLines + 1, copy: false)
             for i in 0 ..< numLines {
                 idx[i] = out_.index[i]
             }
@@ -102,7 +102,7 @@ class MFRTileClipper {
         return true
     }
 
-    private func clipEdge(in inGeom: inout MFRGeometryBuffer, out outGeom: inout MFRGeometryBuffer, edge: Int) throws {
+    private func clipEdge(in inGeom: MFRGeometryBuffer, out outGeom: MFRGeometryBuffer, edge: Int) throws {
 
         try outGeom.startPolygon()
         var outer: Bool = true
@@ -135,13 +135,13 @@ class MFRTileClipper {
 
             switch edge {
             case MFRLineClipper.LEFT:
-                clipRingLeft(indexPos: indexPos, pointPos: pointPos, in: &inGeom, out: &outGeom)
+                clipRingLeft(indexPos: indexPos, pointPos: pointPos, in: inGeom, out: outGeom)
             case MFRLineClipper.RIGHT:
-                clipRingRight(indexPos: indexPos, pointPos: pointPos, in: &inGeom, out: &outGeom)
+                clipRingRight(indexPos: indexPos, pointPos: pointPos, in: inGeom, out: outGeom)
             case MFRLineClipper.TOP:
-                clipRingTop(indexPos: indexPos, pointPos: pointPos, in: &inGeom, out: &outGeom)
+                clipRingTop(indexPos: indexPos, pointPos: pointPos, in: inGeom, out: outGeom)
             case MFRLineClipper.BOTTOM:
-                clipRingBottom(indexPos: indexPos, pointPos: pointPos, in: &inGeom, out: &outGeom)
+                clipRingBottom(indexPos: indexPos, pointPos: pointPos, in: inGeom, out: outGeom)
             default: break    }
 
             pointPos += len
@@ -150,7 +150,7 @@ class MFRTileClipper {
         }
     }
 
-    private func clipRingLeft(indexPos: Int, pointPos: Int, in inGeom: inout MFRGeometryBuffer, out outGeom: inout MFRGeometryBuffer) {
+    private func clipRingLeft(indexPos: Int, pointPos: Int, in inGeom: MFRGeometryBuffer, out outGeom: MFRGeometryBuffer) {
         let end: Int = inGeom.index[indexPos] + pointPos
         var px: Float = inGeom.points[end - 2]
         var py: Float = inGeom.points[end - 1]
@@ -182,7 +182,7 @@ class MFRTileClipper {
         }
     }
 
-    private func clipRingRight(indexPos: Int, pointPos: Int, in inGeom: inout MFRGeometryBuffer, out outGeom: inout MFRGeometryBuffer) {
+    private func clipRingRight(indexPos: Int, pointPos: Int, in inGeom: MFRGeometryBuffer, out outGeom: MFRGeometryBuffer) {
         let len: Int = inGeom.index[indexPos] + pointPos
         var px: Float = inGeom.points[len - 2]
         var py: Float = inGeom.points[len - 1]
@@ -210,7 +210,7 @@ class MFRTileClipper {
         }
     }
 
-    private func clipRingTop(indexPos: Int, pointPos: Int, in inGeom: inout MFRGeometryBuffer, out outGeom: inout MFRGeometryBuffer) {
+    private func clipRingTop(indexPos: Int, pointPos: Int, in inGeom: MFRGeometryBuffer, out outGeom: MFRGeometryBuffer) {
         let len: Int = inGeom.index[indexPos] + pointPos
         var px: Float = inGeom.points[len - 2]
         var py: Float = inGeom.points[len - 1]
@@ -238,7 +238,7 @@ class MFRTileClipper {
         }
     }
 
-    private func clipRingBottom(indexPos: Int, pointPos: Int, in inGeom: inout MFRGeometryBuffer, out outGeom: inout MFRGeometryBuffer) {
+    private func clipRingBottom(indexPos: Int, pointPos: Int, in inGeom: MFRGeometryBuffer, out outGeom: MFRGeometryBuffer) {
         let len: Int = inGeom.index[indexPos] + pointPos
         var px: Float = inGeom.points[len - 2]
         var py: Float = inGeom.points[len - 1]
