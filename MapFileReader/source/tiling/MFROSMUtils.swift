@@ -37,6 +37,7 @@ class MFROSMUtils {
     static func isArea(mapElement: MFRMapElement) -> Bool
     {
         var result = true
+        let language: Locale = Locale.init(identifier: "en-GB")
         for i in 0 ..< mapElement.tags.numTags
         {
             // Validation
@@ -46,15 +47,6 @@ class MFROSMUtils {
             }
 
             // TODO: Localization
-            //            let key: String = tag.key.toLowerCase(Locale.ENGLISH)
-            //            let value: String = tag.value.toLowerCase(Locale.ENGLISH)
-            let language: Locale = Locale.init(identifier: "en-GB")
-//            printN("lang: \(language!)")
-//            printN("lang: \(Locale.init(identifier: "en"))")
-//            printN("lang: \(Locale.init(identifier: "eng"))")
-//            printN("lang: \(Locale.init(identifier: "de"))")
-//            printN("lang: \(Locale.init(identifier: "ger"))")
-//            printN("lang: \(Locale.init(identifier: "de-DE"))")
 
             let key: String = tag.key.lowercased(with: language)
             let value: String = tag.value.lowercased(with: language)
