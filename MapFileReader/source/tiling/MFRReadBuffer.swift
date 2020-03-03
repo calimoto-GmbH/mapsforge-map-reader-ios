@@ -27,7 +27,7 @@ class MFRReadBuffer {
     /**
      Maximum buffer size which is supported by this implementation.
      */
-    static let MAXIMUM_BUFFER_SIZE: Int = 8000000
+    static let MAXIMUM_BUFFER_SIZE: Int = 8_000_000
 
     fileprivate var mBufferData: [Int8]?
     fileprivate var mBufferPosition: Int?
@@ -244,6 +244,73 @@ class MFRReadBuffer {
      - Parameter length: number of values to read
      */
     func readSignedInt(_ values: inout [Int], length: Int) throws {
+
+        guard let data = mBufferData else {
+            throw MFRErrorHandler.IllegalStateException("readSignedInt(values:length:) - No buffer data")
+        }
+        guard var pos = mBufferPosition else {
+            throw MFRErrorHandler.IllegalStateException("readSignedInt(values:length:) - No buffer position")
+        }
+
+        var flag: Int
+
+        for i in 0 ..< length {
+
+            if (Int(data[pos]) & 0x80) == 0 {
+
+                flag = (Int(data[pos]) & 0x40) >> 6
+
+                values[i] = ((Int(data[pos]) & 0x3f) ^ -flag) + flag
+                pos = pos + 1
+
+            } else if (Int(data[pos + 1]) & 0x80) == 0 {
+
+                flag = (Int(data[pos + 1]) & 0x40) >> 6
+
+                values[i] = (((Int(data[pos]) & 0x7f)
+                    | (Int(data[pos + 1]) & 0x3f) << 7) ^ -flag) + flag
+                pos = pos + 2
+
+            } else if (Int(data[pos + 2]) & 0x80) == 0 {
+
+                flag = (Int(data[pos + 2]) & 0x40) >> 6
+
+                let statement1 = Int(Int((data[pos]) & 0x7f)
+                    | (Int(data[pos + 1]) & 0x7f) << 7
+                    | (Int(data[pos + 2]) & 0x3f) << 14)
+                values[i] = (statement1 ^ -flag) + flag
+                pos = pos + 3
+
+            } else if (Int(data[pos + 3]) & 0x80) == 0 {
+
+                flag = (Int(data[pos + 3]) & 0x40) >> 6
+
+                let statement1 = (Int(data[pos]) & 0x7f)
+                    | (Int(data[pos + 1]) & 0x7f) << 7
+                    | (Int(data[pos + 2]) & 0x7f) << 14
+                values[i] = ((statement1
+                    | (Int(data[pos + 3]) & 0x3f) << 21) ^ -flag) + flag
+
+                pos = pos + 4
+            } else {
+                flag = (Int(data[pos + 4]) & 0x40) >> 6
+
+                let statement1 = (Int(data[pos]) & 0x7f)
+                    | (Int(data[pos + 1]) & 0x7f) << 7
+                    | (Int(data[pos + 2]) & 0x7f) << 14
+                let statement2 = statement1
+                    | (Int(data[pos + 3]) & 0x7f) << 21
+                    | (Int(data[pos + 4]) & 0x3f) << 28
+                values[i] = (statement2 ^ -flag) + flag
+
+                pos = pos + 5
+            }
+        }
+
+        mBufferPosition = pos
+    }
+    
+    func readSignedInt(_ values: UnsafeMutableBufferPointer<Int>, length: Int) throws {
 
         guard let data = mBufferData else {
             throw MFRErrorHandler.IllegalStateException("readSignedInt(values:length:) - No buffer data")

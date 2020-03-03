@@ -484,6 +484,7 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
 //        printN("number of pois = \(elementCounter)")
         do {
             while elementCounter != 0 {
+                elementCounter -= 1
 
                 /* get the POI latitude offset (VBE-S) */
                 let latitude: Int = Int(try mReadBuffer.readSignedInt()) + mTileLatitude
@@ -548,8 +549,6 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                 } catch {
                     printN("element: \(e) could not be projected.\n\(error.localizedDescription)\n\(error)")
                 }
-
-                elementCounter -= 1
             }
 
             return true
@@ -616,8 +615,8 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
                                 e: MFRMapElement,
                                 length: Int,
                                 isLine: Bool) throws -> Int {
-        try mReadBuffer.readSignedInt(&mIntBuffer, length: length)
-        let buffer = UnsafeBufferPointer<Int>(start: &mIntBuffer, count: mIntBuffer.count)
+        let buffer = UnsafeMutableBufferPointer<Int>(start: &mIntBuffer, count: mIntBuffer.count)
+        try mReadBuffer.readSignedInt(buffer, length: length)
 
         let outBuffer = e.ensurePointSize(size_: e.pointPos + length, copy: true)
         var outPos: Int = e.pointPos

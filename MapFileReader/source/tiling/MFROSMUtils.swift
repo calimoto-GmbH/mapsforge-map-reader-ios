@@ -34,10 +34,10 @@ class MFROSMUtils {
      * @param mapElement the map element (which is assumed to be closed and have enough nodes to be an area)
      * @return true if tags indicate this is an area, otherwise false.
      */
+    static let language = Locale.init(identifier: "en-GB")
     static func isArea(mapElement: MFRMapElement) -> Bool
     {
         var result = true
-        let language: Locale = Locale.init(identifier: "en-GB")
         for i in 0 ..< mapElement.tags.numTags
         {
             // Validation
