@@ -41,6 +41,8 @@ public class MFRMapFileUtils {
         if language.isEmpty {
             return langNames[0]
         }
+        
+        printN("preferred language : \(language)")
 
         var fallback: String? = nil
         for i in 1 ..< langNames.count
@@ -49,27 +51,22 @@ public class MFRMapFileUtils {
             if (langName.count != 2) {
                 continue
             }
+            
+            printN("langName : \(langName)")
 
             // Perfect match
-            if (langName[0].lowercased().contains(language.lowercased())) {
+            if (language.lowercased().lowercased().contains(langName[0])) {
+                printN("language match return : \(langName)")
                 return langName[1]
-            }
-
-            // Fall back to base, e.g. zh-min-lan -> zh
-//            if (fallback == null && !langName[0].contains("-") && (language.contains("-") || language.contains("_"))
-//                && language.toLowerCase(Locale.ENGLISH).startsWith(langName[0].toLowerCase(Locale.ENGLISH))) {
-//                fallback = langName[1]
-//            }
-            printN("fallback : \(fallback ?? "no fallback")")
-            printN("language : \(language)")
-            printN("langNames : \(langName)")
-            printN("language.lowercased(with: Locale(identifier: \"en\")) : \(language.lowercased(with: Locale(identifier: "en")))")
-            printN("language.lowercased(with: Locale(identifier: \"en\")).startsWith(string: langName[0].lowercased(with: Locale(identifier: \"en\"))) : \(language.lowercased(with: Locale(identifier: "en")).startsWith(string: langName[0].lowercased(with: Locale(identifier: "en"))))")
-            if (fallback == nil && !langName[0].contains("-") && (language.contains("-") || language.contains("_"))
-                && language.lowercased(with: Locale(identifier: "en")).startsWith(string: langName[0].lowercased(with: Locale(identifier: "en")))) {
+            } else if fallback == nil &&
+                !langName[0].contains("-") &&
+                langName[0].lowercased(with: Locale(identifier: "en")).contains("en")
+            {
+                printN("language fallback set for : \(langNames[0]) -> \(langName)")
                 fallback = langName[1]
             }
         }
+        printN("using fallback : \(fallback ?? "no fallback : use -> \(langNames[0])")")
         return (fallback != nil) ? fallback : langNames[0]
     }
 
