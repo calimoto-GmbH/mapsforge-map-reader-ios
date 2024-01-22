@@ -27,7 +27,7 @@ class MFRReadBuffer {
     /**
      Maximum buffer size which is supported by this implementation.
      */
-    static let MAXIMUM_BUFFER_SIZE: Int = 8_000_000
+    static let MAXIMUM_BUFFER_SIZE: Int = 12_000_000
 
     fileprivate var mBufferData: [Int8]?
     fileprivate var mBufferPosition: Int?

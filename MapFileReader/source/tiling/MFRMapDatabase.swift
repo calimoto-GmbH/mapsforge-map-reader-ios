@@ -40,7 +40,7 @@ public class MFRMapDatabase: MFRTileDataSourceProtocol, Hashable {
     private static let MAXIMUM_WAY_NODES_SEQUENCE_LENGTH : Int = 8192
 
     /// Maximum number of map objects in the zoom table which is considered as valid.
-    private static let MAXIMUM_ZOOM_TABLE_OBJECTS : Int = 65536 * 2
+    private static let MAXIMUM_ZOOM_TABLE_OBJECTS : Int = 65536 * 4
 
     /// Bitmask for the optional POI feature "elevation".
     private static let POI_FEATURE_ELEVATION : Int = 0x20
