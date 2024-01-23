@@ -14,7 +14,7 @@ s.ios.deployment_target = '11.0'
 s.source = { :git => "git@github.com:calimoto-GmbH/mapsforge-map-reader-ios.git",
 :tag => s.version.to_s }
 
-s.source_files = 'MapFileReader/**/*'
+s.source_files = 'MapFileReader/Sources/**/*'
 s.exclude_files = "MapFileReader/*.plist"
 
 s.swift_version = "4.2"
